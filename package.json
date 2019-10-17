@@ -1,0 +1,15 @@
+{
+  "name": "stream-match",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "Match a string in a stream",
+  "repository": "juliangruber/stream-match",
+  "scripts": {
+    "test": "prettier-standard '**/*.js' && standard && tap test.js"
+  },
+  "devDependencies": {
+    "prettier-standard": "^15.0.1",
+    "standard": "^14.3.1",
+    "tap": "^14.7.1"
+  }
+}
