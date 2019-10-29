@@ -1,12 +1,12 @@
 # stream-match
 
-Match a string in a stream.
+Match a regexp or string in a stream.
 
 ## Usage
 
 ```js
 // Given a readable stream,
-await match(stream, 'pattern')
+await match(stream, /pattern/)
 // now `pattern` has been emitted by it.
 ```
 
@@ -18,7 +18,7 @@ $ npm install stream-match
 
 ## API
 
-### await match(stream, string)
+### await match(stream, pattern || string)
 
 ## License
 

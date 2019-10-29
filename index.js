@@ -1,11 +1,14 @@
 'use strict'
 
-const match = (stream, string) =>
+const match = (stream, pattern) =>
   new Promise(resolve => {
+    if (typeof pattern === 'string') {
+      pattern = new RegExp(pattern)
+    }
     let buf = ''
     const onData = data => {
       buf += data
-      if (buf.includes(string)) {
+      if (pattern.test(buf)) {
         stream.removeListener('data', onData)
         resolve()
       }
