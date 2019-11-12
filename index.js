@@ -2,13 +2,13 @@
 
 const match = (stream, pattern) =>
   new Promise(resolve => {
-    if (typeof pattern === 'string') {
-      pattern = new RegExp(pattern)
-    }
+    const test = typeof pattern === 'string'
+      ? buf => buf.includes(pattern)
+      : buf => pattern.test(buf)
     let buf = ''
     const onData = data => {
       buf += data
-      if (pattern.test(buf)) {
+      if (test(buf)) {
         stream.removeListener('data', onData)
         resolve()
       }
