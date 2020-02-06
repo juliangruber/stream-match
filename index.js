@@ -2,15 +2,17 @@
 
 const match = (stream, pattern) =>
   new Promise(resolve => {
-    const test = typeof pattern === 'string'
-      ? buf => buf.includes(pattern)
-      : buf => pattern.test(buf)
+    const match =
+      typeof pattern === 'string'
+        ? buf => buf.includes(pattern)
+        : buf => pattern.exec(buf) && pattern.exec(buf)[1]
     let buf = ''
     const onData = data => {
       buf += data
-      if (test(buf)) {
+      const res = match(buf)
+      if (res) {
         stream.removeListener('data', onData)
-        resolve()
+        resolve(res)
       }
     }
     stream.on('data', onData)

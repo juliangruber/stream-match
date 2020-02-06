@@ -6,8 +6,8 @@ Match a regexp or string in a stream.
 
 ```js
 // Given a readable stream,
-await match(stream, /pattern/)
-// now `pattern` has been emitted by it.
+const res = await match(stream, /(p[^n+]n)/)
+// `res` will containt `pattern` once it has been emitted.
 ```
 
 ## Installation
@@ -18,7 +18,7 @@ $ npm install stream-match
 
 ## API
 
-### await match(stream, pattern || string)
+### res = await match(stream, pattern || string)
 
 ## License
 

@@ -6,24 +6,23 @@ const { PassThrough } = require('stream')
 
 test('pattern', async t => {
   const stream = new PassThrough()
-  let matched = false
+  let res
 
   await Promise.all([
     (async () => {
-      await match(stream, /beep boop/)
-      matched = true
+      res = await match(stream, /(bo+p)/)
     })(),
     (async () => {
-      t.notOk(matched)
+      t.notOk(res)
       stream.push('beep ')
-      t.notOk(matched)
+      t.notOk(res)
       stream.push('boo')
-      t.notOk(matched)
+      t.notOk(res)
       stream.push('p')
     })()
   ])
 
-  t.ok(matched)
+  t.equal(res, 'boop')
   stream.push('everything else')
 })
 
