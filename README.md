@@ -20,6 +20,12 @@ $ npm install stream-match
 
 ### res = await match(stream, pattern || string)
 
+## Sponsors
+
+Development of this module is sponsored by:
+
+![Liberate Science](https://libscie.org/assets/images/image01.png?v33093812210851)
+
 ## License
 
 MIT
