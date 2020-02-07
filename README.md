@@ -8,6 +8,9 @@ Match a regexp or string in a stream. Zero dependencies.
 // Given a readable stream,
 const res = await match(stream, /(p[^n]+n)/)
 // `res` will containt `pattern` once it has been emitted.
+
+// You can also wait for a string to be emitted, for example:
+await match(ps.stdout, 'continue now')
 ```
 
 ## Installation
