@@ -5,6 +5,8 @@ Match a regexp or string in a stream. Zero dependencies.
 ## Usage
 
 ```js
+const match = require('stream-match')
+
 // Given a readable stream,
 const res = await match(stream, /(p[^n]+n)/)
 // `res` will containt `pattern` once it has been emitted.
