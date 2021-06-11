@@ -1,8 +1,6 @@
-'use strict'
-
-const { test } = require('tap')
-const match = require('.')
-const { PassThrough } = require('stream')
+import { test } from 'tap'
+import match from './index.js'
+import { PassThrough } from 'stream'
 
 test('pattern', async t => {
   const stream = new PassThrough()

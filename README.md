@@ -5,7 +5,7 @@ Match a regexp or string in a stream. Zero dependencies.
 ## Usage
 
 ```js
-const match = require('stream-match')
+import match from 'stream-match'
 
 // Given a readable stream,
 const res = await match(stream, /(p[^n]+n)/)
@@ -24,12 +24,6 @@ $ npm install stream-match
 ## API
 
 ### res = await match(stream, pattern || string)
-
-## Sponsors
-
-Development of this module is sponsored by:
-
-![Liberate Science](https://libscie.org/assets/images/image01.png?v33093812210851)
 
 ## License
 

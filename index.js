@@ -1,6 +1,4 @@
-'use strict'
-
-const match = (stream, pattern) =>
+export default (stream, pattern) =>
   new Promise(resolve => {
     const match =
       typeof pattern === 'string'
@@ -17,5 +15,3 @@ const match = (stream, pattern) =>
     }
     stream.on('data', onData)
   })
-
-module.exports = match
