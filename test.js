@@ -1,4 +1,5 @@
-import { test } from 'tap'
+import test from 'test'
+import assert from 'node:assert'
 import match from './index.js'
 import { PassThrough } from 'stream'
 
@@ -11,16 +12,16 @@ test('pattern', async t => {
       res = await match(stream, /(bo+p)/)
     })(),
     (async () => {
-      t.notOk(res)
+      assert(!res)
       stream.push('beep ')
-      t.notOk(res)
+      assert(!res)
       stream.push('boo')
-      t.notOk(res)
+      assert(!res)
       stream.push('p')
     })()
   ])
 
-  t.equal(res, 'boop')
+  assert.strictEqual(res, 'boop')
   stream.push('everything else')
 })
 
@@ -34,16 +35,16 @@ test('string', async t => {
       matched = true
     })(),
     (async () => {
-      t.notOk(matched)
+      assert(!matched)
       stream.push('beep ')
-      t.notOk(matched)
+      assert(!matched)
       stream.push('boo')
-      t.notOk(matched)
+      assert(!matched)
       stream.push('p')
     })()
   ])
 
-  t.ok(matched)
+  assert(matched)
   stream.push('everything else')
 })
 
@@ -57,15 +58,15 @@ test('string with backslashes', async t => {
       matched = true
     })(),
     (async () => {
-      t.notOk(matched)
+      assert(!matched)
       stream.push('beep\\')
-      t.notOk(matched)
+      assert(!matched)
       stream.push('boo')
-      t.notOk(matched)
+      assert(!matched)
       stream.push('p')
     })()
   ])
 
-  t.ok(matched)
+  assert(matched)
   stream.push('everything else')
 })
