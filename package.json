@@ -10,7 +10,7 @@
     "test": "standard --fix && node--test"
   },
   "devDependencies": {
-    "np": "^5.2.1",
+    "np": "^7.6.2",
     "standard": "^17.0.0",
     "test": "^3.2.1"
   }
