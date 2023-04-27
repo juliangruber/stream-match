@@ -5,6 +5,7 @@
   "description": "Match a string in a stream. Zero dependencies",
   "repository": "juliangruber/stream-match",
   "type": "module",
+  "main": "index.js",
   "scripts": {
     "release": "np",
     "test": "standard --fix && node--test"
