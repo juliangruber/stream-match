@@ -1,19 +1,16 @@
-const streamMatch = (stream, pattern) =>
-  new Promise(resolve => {
-    const match =
-      typeof pattern === 'string'
-        ? buf => buf.includes(pattern)
-        : buf => pattern.exec(buf)
-    let buf = ''
-    const onData = data => {
-      buf += data
-      const res = match(buf)
-      if (res) {
-        stream.removeListener('data', onData)
-        resolve(res)
-      }
+const streamMatch = async (stream, pattern) => {
+  const match =
+    typeof pattern === 'string'
+      ? buf => buf.includes(pattern)
+      : buf => pattern.exec(buf)
+  let buf = ''
+  for await (const data of stream) {
+    buf += data
+    const res = match(buf)
+    if (res) {
+      return res
     }
-    stream.on('data', onData)
-  })
+  }
+}
 
 export default streamMatch
