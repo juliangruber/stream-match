@@ -21,7 +21,11 @@ test('pattern', async t => {
     })()
   ])
 
-  assert.strictEqual(res, 'boop')
+  const expected = ['boop', 'boop']
+  expected.index = 5
+  expected.input = 'beep boop'
+  expected.groups = undefined
+  assert.deepStrictEqual(res, expected)
   stream.push('everything else')
 })
 

@@ -3,7 +3,7 @@ const streamMatch = (stream, pattern) =>
     const match =
       typeof pattern === 'string'
         ? buf => buf.includes(pattern)
-        : buf => pattern.exec(buf) && pattern.exec(buf)[1]
+        : buf => pattern.exec(buf)
     let buf = ''
     const onData = data => {
       buf += data

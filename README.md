@@ -9,7 +9,7 @@ import match from 'stream-match'
 
 // Given a readable stream,
 const res = await match(stream, /(p[^n]+n)/)
-// `res` will containt `pattern` once it has been emitted.
+// `res` will contain the RegExp result Array once it has been emitted
 
 // You can also wait for a string to be emitted, for example:
 await match(ps.stdout, 'continue now')
