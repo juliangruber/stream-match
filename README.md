@@ -1,6 +1,6 @@
 # stream-match
 
-Match a regexp or string in a stream. Zero dependencies.
+Match a regexp or string in a stream.
 
 ## Usage
 
