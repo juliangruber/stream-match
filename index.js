@@ -11,6 +11,7 @@ const streamMatch = async (stream, pattern) => {
       return res
     }
   }
+  throw new Error('stream ended before pattern matched')
 }
 
 export default streamMatch
