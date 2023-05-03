@@ -52,7 +52,7 @@ test('string', async t => {
   stream.push('everything else')
 })
 
-test('string with backslashes', async t => {
+test('string with backslashes', async () => {
   const stream = new PassThrough()
   let matched = false
 
@@ -73,4 +73,17 @@ test('string with backslashes', async t => {
 
   assert(matched)
   stream.push('everything else')
+})
+
+test('end without match', async () => {
+  const stream = new PassThrough()
+  stream.end()
+
+  await assert.rejects(
+    match(stream, 'beep'),
+    {
+      name: 'Error',
+      message: 'stream ended before pattern matched'
+    }
+  )
 })
