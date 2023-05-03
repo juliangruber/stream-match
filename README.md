@@ -23,7 +23,10 @@ $ npm install stream-match
 
 ## API
 
-### res = await match(stream, pattern || string)
+### res = await match(stream, pattern || string, { signal? })
+
+Pass the optional `{ signal }` with an `AbortController#signal` to abort early.
+In this case, an `Error` with `.code = 'ABORT_ERR'` will be thrown.
 
 ## License
 

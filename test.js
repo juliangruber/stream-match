@@ -2,6 +2,7 @@ import test from 'test'
 import assert from 'node:assert'
 import match from './index.js'
 import { PassThrough } from 'stream'
+import timers from 'node:timers/promises'
 
 test('pattern', async t => {
   const stream = new PassThrough()
@@ -86,4 +87,25 @@ test('end without match', async () => {
       message: 'stream ended before pattern matched'
     }
   )
+})
+
+test('signal', async () => {
+  const stream = new PassThrough()
+  const controller = new AbortController()
+  const { signal } = controller
+
+  await Promise.all([
+    assert.rejects(
+      match(stream, 'beep', { signal }),
+      {
+        code: 'ABORT_ERR'
+      }
+    ),
+    (async () => {
+      await timers.setTimeout(1000)
+      controller.abort()
+    })()
+  ])
+
+  console.log('done')
 })
