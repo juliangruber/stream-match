@@ -87,3 +87,13 @@ test('end without match', async () => {
     }
   )
 })
+
+test('signal', async () => {
+  const stream = new PassThrough()
+  const signal = AbortSignal.timeout(1)
+
+  assert.rejects(
+    match(stream, 'beep', { signal }),
+    { code: 'ABORT_ERR' }
+  )
+})

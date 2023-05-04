@@ -1,10 +1,15 @@
-const streamMatch = async (stream, pattern) => {
+import { abortableSource } from 'abortable-iterator'
+
+const streamMatch = async (stream, pattern, { signal } = {}) => {
   const match =
     typeof pattern === 'string'
       ? buf => buf.includes(pattern)
       : buf => pattern.exec(buf)
   let buf = ''
-  for await (const data of stream) {
+  const it = signal
+    ? abortableSource(stream, signal)
+    : stream
+  for await (const data of it) {
     buf += data
     const res = match(buf)
     if (res) {

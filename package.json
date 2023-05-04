@@ -14,5 +14,8 @@
     "np": "^7.6.2",
     "standard": "^17.0.0",
     "test": "^3.2.1"
+  },
+  "dependencies": {
+    "abortable-iterator": "^5.0.1"
   }
 }
