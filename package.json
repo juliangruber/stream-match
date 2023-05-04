@@ -1,6 +1,6 @@
 {
   "name": "stream-match",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "license": "MIT",
   "description": "Match a string in a stream. Zero dependencies",
   "repository": "juliangruber/stream-match",
