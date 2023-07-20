@@ -11,7 +11,7 @@
     "test": "standard --fix && node--test"
   },
   "devDependencies": {
-    "np": "^7.6.2",
+    "np": "^8.0.4",
     "standard": "^17.0.0",
     "test": "^3.2.1"
   },
